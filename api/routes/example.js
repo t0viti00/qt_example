@@ -1,4 +1,4 @@
-const express = require('express');
+const express =require('express');
 const router = express.Router();
 const example_sql = require('../models/example_model');
 
@@ -33,6 +33,20 @@ router.get('/oneperson/:id',
         })  
         
     }
+);
+
+router.get('/fullname/:id',
+    function(request, response){
+        example_sql.getFullName(request.params.id, 
+            function(err,dbResult){
+                if(err){
+                    response.json(err);
+                }
+                else{
+                    response.json(dbResult);
+                }
+            })
+        }
 );
 
 

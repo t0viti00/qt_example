@@ -1,6 +1,6 @@
 const database=require('../database');
 
-const example_sql={
+const example_sql ={
 
     getAllPersons:function(callback){
         return database.query('select * from person',
@@ -10,6 +10,10 @@ const example_sql={
     getOnePerson:function(id, callback){
         return database.query('select * from person where id_person=?', [id], callback);
 
+    },
+
+    getFullName:function(id, callback){
+        return database.query('select CONCAT (fname," ",lname) AS fullname from person where id_person=?',[id],callback);
     }
 
 };
