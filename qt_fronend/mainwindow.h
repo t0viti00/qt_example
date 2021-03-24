@@ -18,7 +18,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_btnGetAllPersons_clicked();
+    void allPersonsSlot(QNetworkReply *reply);
+
 private:
     Ui::MainWindow *ui;
+    QNetworkAccessManager *allPersonsManager;
+    QNetworkReply *allPersonsReply;
 };
 #endif // MAINWINDOW_H
